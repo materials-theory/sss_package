@@ -8,8 +8,8 @@ import numpy as np
 ## -----------------------------About code----------------------------- ##
 ## Giyeok Lee, Ethan                                                    ##
 ## sss_package of MTG (https://github.com/materials-theory/sss_package) ##
-## Version : 2019.11.05 (By Giyeok Lee)                                 ##
-## Revised : 2019.11.05 (By Giyeok Lee)                                 ##
+## Version : 2019.11.13 (By Giyeok Lee, Taehun Lee)                     ##
+## Revised : 2019.11.13 (By Giyeok Lee, Taehun Lee)                     ##
 ## -------------------------------------------------------------------- ##
 ##########################################################################
 
