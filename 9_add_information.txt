@@ -1,0 +1,71 @@
+1. 설명
+
+(1) 5개의 계산순서 (cal1 ~ cal5)
+ * Cal 1 : Bulk Variable Cell Optimization
+ * Cal 2 : Strained_Calculation (Biaxial Strain)
+ * Cal 3 : Making asymmetric Slab from Bulk and Geometry Optimization
+ * Cal 4 : Scf calculation of optimized slab 
+ * Cal 5 : Non-scf calculation for making LOCPOT file (Local potential data)
+
+(2) File Input
+
+	in running directory,
+
+		directory/
+			|__input/
+				|__INCAR 1~5
+				|__POSCAR
+				|__KPOINTS
+				|__POTCAR
+				|__other input files (kernel, etc...)
+			|__job_file (usually .sh format) <-- Which contains commands which executing this python scripts.
+
+		this is right usage. Please make input files in 'input/' directory.
+																																																															\
+																																																														
+
+
+(3) Input parameter
+|---> mode : 어느 스텝부터 시작할 지 정하는 부분. (1~5개. default=0, this means 'calculate everything')
+|---> theta, epsilon : When Applying biaxial strain, these tags decide angle(theta) and strain(epsilon)
+|---> dlayer : Choose the width of layer to iterate.
+|---> nlayer : Choose the number of layers when making slabs.
+|---> flayer : Choose the number of center layers to fix (do not move)
+|---> vac : Decide the length of vacuum (from topmost atom to the ceiling of unit cell)
+
+(4) Output
+
+		directory/               <---- 계산을 돌리는 디렉토리
+			|__input/
+				|__INCAR 1~5
+				|__POSCAR
+				|__KPOINTS
+				|__POTCAR
+				|__other input files (kernel, etc...)
+			|__job_file (usually .sh format) <-- Which contains commands for executing this python scripts.
+
+			|___1_bulk/
+			|___process/
+				|___2_constrained_bulk
+				|___3_geoopt_slab
+				|___4_scf
+				|___5_nonscf_for_wf
+
+
+
+
+
+2. 사용방법
+
+1. (2) File input에 적혀있는 파일트리처럼, 
+
+input/
+	|___INCAR_1~5
+	|___POSCAR
+	|___KPOINTS
+	|___POTCAR
+	|___other input files(kernel, etc...)
+job_file.sh
+
+이렇게 두고, job_file.sh 파일에 파이썬 스크립트를 실행하라는 명령어를 입력하면 됩니다.
+어떤 노드에서 계산할 것인지나, 노드 당 cpu 사용 개수 등의 설정은 다른 VASP계산들과 마찬가지로 job_file.sh안에서 설정하면 됩니다.
