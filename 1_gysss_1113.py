@@ -756,17 +756,11 @@ else:
 				natoms_slab=sum(CONTCAR_3[4])
 				
 				SFE=(E3_slab/sum(CONTCAR_3[4])-E1_bulk/sum(CONTCAR_1[4]))*natoms_slab/(2*Area)
-				print(">>> Surface free energy : [ %.3f ]"%SFE, file=log)
+				print(">>> Surface free energy : [ %.5f ] (eV/Angstrom^2)"%SFE, file=log)
 			except:
 				print(">>> Not supported yet. I will add the manual version. For now, please use calculation mode 1 or 2 to get this value", file=log)
 
 			log.close()
 
-
-
 	## property calculation. Later, all data files will be wrapped in .json files. (will be updated)
-	# Area=np.outer(which a, which b)
-	# 
-	# Surface_Tension=(E3_slab-E2_stbulk)/(2*Area)
-	# print("Surface tension value is [ %10.5f ], (eV/Angstrom^2)"%(Surface_Tension), file=log)
 	# execute gyp.py
